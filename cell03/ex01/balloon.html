@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Balloon</title>
+  <style>
+    #balloon {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      border-radius: 50%;
+      margin: 50px auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="balloon"></div>
+
+  <script>
+    const balloon = document.getElementById("balloon");
+    let size = 200;
+    const minSize = 200;
+    const maxSize = 420;
+    const colors = ["red", "green", "blue"];
+    let colorIndex = 0;
+
+    // เมื่อกด คลิก -> balloon โตขึ้น +10px และเปลี่ยนสี
+    balloon.addEventListener("click", () => {
+      size += 10;
+      colorIndex = (colorIndex + 1) % colors.length;
+      balloon.style.backgroundColor = colors[colorIndex];
+      balloon.style.width = size + "px";
+      balloon.style.height = size + "px";
+
+      if (size > maxSize) {
+        size = minSize;
+        colorIndex = 0;
+        balloon.style.backgroundColor = colors[colorIndex];
+        balloon.style.width = size + "px";
+        balloon.style.height = size + "px";
+      }
+    });
+
+    // เมื่อเอา mouse ออกจาก balloon -> หดลง -5px และเปลี่ยนสีย้อนกลับ
+    balloon.addEventListener("mouseleave", () => {
+      size = Math.max(minSize, size - 5);
+      colorIndex = (colorIndex - 1 + colors.length) % colors.length;
+      balloon.style.backgroundColor = colors[colorIndex];
+      balloon.style.width = size + "px";
+      balloon.style.height = size + "px";
+    });
+  </script>
+</body>
+</html>
