@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator - It's over 9000!</title>
+</head>
+<body>
+    <h2>Simple Calculator</h2>
+
+    <input type="number" id="left" placeholder="First Number" min="0">
+    
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+
+    <input type="number" id="right" placeholder="Secound Number" min="0">
+    
+    <button id="calculate">Try me!</button>
+
+    <script>
+        setInterval(() => {
+            alert('Please, use me...');
+        }, 30000);
+
+        document.getElementById('calculate').addEventListener('click', () => {
+            var left = Number(document.getElementById('left').value);
+            var right = Number(document.getElementById('right').value);
+            var op = document.getElementById('operator').value;
+
+            if (left < 0 || right < 0 || isNaN(left) || isNaN(right)) {
+                alert('Error :(');
+                return;
+            }
+
+            if ((op === '/' || op === '%') && right === 0) {
+                alert("It's over 9000!");
+                console.log("It's over 9000!");
+                return;
+            }
+
+            let result;
+            switch(op) {
+                case '+': result = left + right; break;
+                case '-': result = left - right; break;
+                case '*': result = left * right; break;
+                case '/': result = left / right; break;
+                case '%': result = left % right; break;
+            }
+
+            alert(result);
+            console.log(result);
+        });
+    </script>
+</body>
+</html>
