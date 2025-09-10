@@ -1,0 +1,35 @@
+
+body, html {
+  margin: 0;
+  height: 100%;
+}
+
+.parallax {
+  position: relative;
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.img1 {
+  background-image: url("https://picsum.photos/1200/800?random=1");
+}
+
+.img2 {
+  background-image: url("https://picsum.photos/1200/800?random=2");
+}
+
+.caption {
+  position: absolute;
+  top: 50%;
+  left: 46%;
+  text-align: center;
+  color: #fff;
+}
+
+.caption .border {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  font-size: 24px;
+  border-radius: 8px;
+}
