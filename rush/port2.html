@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Portfolio 💻</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="container">
+            <a class="nav-brand" href="index.html">OurPortfolio</a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </label>
+            <ul class="nav-links">
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#showcase">Showcase</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section id="home" class="home-section">
+        <div class="container text-center">
+            <h1>DECHCHART TASILP</h1>
+            <h2>Portfolio</h2>
+        </div>
+    </section>
+    <section id="about" class="portfolio-section">
+        <div class="container">
+            <h2>About</h2>
+            </div>
+    </section>
+    <section id="showcase" class="portfolio-section bg-light">
+        <div class="container">
+            <h2>Showcase</h2>
+            </div>
+    </section>
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Contact Me</h2>
+            </div>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+    const navbar = document.querySelector('.main-nav');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    const sections = document.querySelectorAll('section');
+    const navLi = document.querySelectorAll('.main-nav .nav-link');
+
+    window.addEventListener('scroll', ()=> {
+        let current = '';
+        sections.forEach( section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= (sectionTop - sectionHeight / 3) ) {
+                current = section.getAttribute('id');
+            }
+        })
+
+        navLi.forEach( a => {
+            a.classList.remove('active');
+            if (a.getAttribute('href').includes(current)) {
+                a.classList.add('active');
+            }
+        })
+    });
+});
+    </script>
+</body>
+</html>
